@@ -3,10 +3,10 @@
 using namespace std;
 
 struct node{
-	int x;int y;
+	long long int x;long long int y;
 	node *next;
 	//Consructor
-	node(int a,int b){
+	node(long long int a,long long int b){
 		x=a;
 		y=b;
 		next=NULL;
@@ -15,7 +15,7 @@ struct node{
 
 struct linkedlist{
 	node *head=NULL;
-	void AddFirst(int a,int b){
+	void AddFirst(long long int a,long long int b){
 		node *temp=new node(a,b);
 		if(head==NULL){
 			head=temp;
@@ -27,14 +27,16 @@ struct linkedlist{
 	}
 	int DelFirst(){
 		if(head==NULL){
+			
 			return -1;
 		}
 		node *temp=head;
 		head=head->next;
 		free(temp);
+		
 		return 0;
 	}
-	int Del(int a,int b){
+	int Del(long long int a,long long int  b){
 		node *prev=NULL;
 		node *present=head;
 		while(present){
@@ -52,7 +54,7 @@ struct linkedlist{
 		prev->next=present->next;
 		free(present);
 	}
-	void Search(float d){
+	void Search(long double  d){
 		node *present=head;
 		int count=0;
 		while(present){
@@ -67,7 +69,7 @@ struct linkedlist{
 		}
 		cout<<endl;
 	}
-	bool Search2(int a,int b){
+	bool Search2(long long int a,long long int b){
 		node *present=head;
 		while(present){
 			if(present->x==a&&present->y==b){
@@ -77,8 +79,8 @@ struct linkedlist{
 		}
 		return 0;
 	}
-	int length(){
-		int count=0;
+	long long int length(){
+		long long int count=0;
 		node *present=head;
 		while(present){
 			count++;
@@ -88,7 +90,6 @@ struct linkedlist{
 	}
 	void printll(){
 		node *present=head;
-		int count=0;
 		while(present){
 			
 			cout<<"("<<(present->x)<<","<<(present->y)<<") ";
@@ -101,31 +102,32 @@ struct linkedlist{
 };
 
 int main(){
+	//Note that in both the delete functions, 0 will be printed in case of successful deletion,else -1 will be printed
 	linkedlist l;
 	unsigned long long int t;
 	cin>>t;
 	while(t--){
-		int f;cin>>f;
+		long long int f;cin>>f;
 		if(f==1){
-			int a,b;
+			long long int a,b;
 			cin>>a>>b;
 			l.AddFirst(a,b);
 		}
 		if(f==2){
-			l.DelFirst();
+			cout<<l.DelFirst()<<endl;
 		}
 		if(f==3){
-			int a,b;
+			long long int a,b;
 			cin>>a>>b;
-			l.Del(a,b);
+			cout<<l.Del(a,b)<<endl;
 		}
 		if(f==4){
-			float d;
+			long double d;
 			cin>>d;
 			l.Search(d);
 		}
 		if(f==5){
-			int a,b;
+			long long int a,b;
 			cin>>a>>b;
 			if(l.Search2(a,b)){
 				cout<<"True";
@@ -139,6 +141,7 @@ int main(){
 			cout<<l.length()<<endl;
 		}
 		//l.printll();
+		//cout<<endl;
 	}
 
 }
