@@ -70,8 +70,10 @@ bool balanced_parenthesis(string s){
 		
 			else {p.push('|');}
 		}
+		else return 0;
 		
 	}
+
 	if(p.empty()==1){
 		
 		return 1;
