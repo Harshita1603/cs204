@@ -53,21 +53,20 @@ struct linkedlist{
 		}
 		prev->next=present->next;
 		free(present);
+		return 0;
 	}
-	void Search(long double  d){
+	int Search(long double  d){
 		node *present=head;
 		int count=0;
 		while(present){
 			if((present->x)*(present->x)+(present->y)*(present->y)<=d*d){
-				cout<<"("<<(present->x)<<","<<(present->y)<<") ";
+				//cout<<"("<<(present->x)<<","<<(present->y)<<") ";
 				count++;
 			}
 			present=present->next;
 		}
-		if(count==0){
-			cout<<-1;
-		}
-		cout<<endl;
+		if(count==0)count=-1;
+		return count;
 	}
 	bool Search2(long long int a,long long int b){
 		node *present=head;
@@ -104,7 +103,7 @@ struct linkedlist{
 int main(){
 	//Note that in both the delete functions, 0 will be printed in case of successful deletion,else -1 will be printed
 	linkedlist l;
-	unsigned long long int t;
+	 long long int t;
 	cin>>t;
 	while(t--){
 		long long int f;cin>>f;
@@ -114,17 +113,19 @@ int main(){
 			l.AddFirst(a,b);
 		}
 		if(f==2){
-			cout<<l.DelFirst()<<endl;
+			int x=l.DelFirst();
+			if(x==-1)cout<<-1<<endl;
 		}
 		if(f==3){
 			long long int a,b;
 			cin>>a>>b;
-			cout<<l.Del(a,b)<<endl;
+			int x=l.Del(a,b);
+			if(x==-1)cout<<-1<<endl;
 		}
 		if(f==4){
 			long double d;
 			cin>>d;
-			l.Search(d);
+			cout<<l.Search(d)<<endl;
 		}
 		if(f==5){
 			long long int a,b;
