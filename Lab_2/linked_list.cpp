@@ -101,7 +101,7 @@ struct linkedlist{
 };
 
 int main(){
-	//Note that in both the delete functions, 0 will be printed in case of successful deletion,else -1 will be printed
+	
 	linkedlist l;
 	 long long int t;
 	cin>>t;
