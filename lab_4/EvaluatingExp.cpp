@@ -165,6 +165,7 @@ int evaluation(evalTree* head)
 int main(){
 	unsigned long long int t;cin>>t;
 	while(t--){
+		int flag=1;
 	string s;
 	cin>>s;
 	vector <string> v;
@@ -177,20 +178,33 @@ int main(){
 		else{
 			string res;
 			while(s[i]!='('&&s[i]!=')'&&s[i]!='*'&&s[i]!='^'&&s[i]!='-'&&s[i]!='+'&&s[i]!='/'&&i<s.length()){
+				if(s[i]>='0'&&s[i]<='9'){
 				res+=s[i];
 				i++;
+			}
+			else{
+				flag=0;
+				break;
+			}
 			}
 			i--;
 			v.push_back(res);
 		}
+		if(flag==0)break;
 	}
+	if(flag){
 	//cout<<v.size()<<"||";
 	vector <string> o=ConvertinfixToPostfix(v);
 	//for(int i=0;i<o.size();i++)cout<<o[i]<<" ";
 	//cout<<endl;
 	evalTree*t = constructTree(o);
+
 	//inorder(t);
 	cout<<evaluation(t)<<endl;
+}
+else{
+	cout<<"NOT A VALID INPUT"<<endl;
+}
 }
 	
 	return 0;
