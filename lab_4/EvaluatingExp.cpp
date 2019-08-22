@@ -169,29 +169,21 @@ int main(){
 	string s;
 	cin>>s;
 	vector <string> v;
-	bool op=0;
-	bool close=0;
+	char prev=0;
 	for(int i=0;i<s.length();i++){
 		if(s[i]=='('||s[i]==')'||s[i]=='*'||s[i]=='^'||s[i]=='-'||s[i]=='+'||s[i]=='/'){
 		    
 			string res;
 			res+=s[i];
-			if(i==0&&s[i]=='-'){
-			    close=1;
-			    v.push_back("(");
-			    v.push_back("0");
-			    
-			}
-			if(i!=0&&(s[i]=='-'&&op==1)){
-			    close=1;
-			    v.push_back("(");
+			if(s[i]=='-'&&prev=='('){
 			    v.push_back("0");
 			}
-			if(s[i]!=')')op=1;
+			prev=s[i];
+			
 			v.push_back(res);
 		}
 		else{
-		    op=0;
+		    
 			string res;
 			while(s[i]!='('&&s[i]!=')'&&s[i]!='*'&&s[i]!='^'&&s[i]!='-'&&s[i]!='+'&&s[i]!='/'&&i<s.length()){
 				if(s[i]>='0'&&s[i]<='9'){
@@ -205,10 +197,7 @@ int main(){
 			}
 			i--;
 			v.push_back(res);
-			if(close==1){
-			    v.push_back(")");
-			    close=0;
-			}
+			
 		}
 		if(flag==0)break;
 	}
