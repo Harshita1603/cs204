@@ -187,7 +187,7 @@ int main(){
 			    v.push_back("(");
 			    v.push_back("0");
 			}
-			op=1;
+			if(s[i]!=')')op=1;
 			v.push_back(res);
 		}
 		else{
