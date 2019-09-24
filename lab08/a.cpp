@@ -4,20 +4,20 @@ using namespace std;
 #define f(a,b,c) for(lli a=b;a<c;a++)
 
 
-void swap(int *a,int *b){
-    int t=*a;
+void swap(lli *a,lli *b){
+    lli t=*a;
     *a=*b;
     *b=t;
 }
-int part(int *arr,int l,int r,int x){
-    int i;
+lli part(lli *arr,lli l,lli r,lli x){
+    lli i;
     for (i=l; i<r; i++) 
         if (arr[i] == x) 
            break; 
     swap(&arr[i], &arr[r]); 
   
     i = l; 
-    for (int j = l; j <= r - 1; j++) 
+    for (lli j = l; j <= r - 1; j++) 
     { 
         if (arr[j] <= x) 
         { 
@@ -29,12 +29,12 @@ int part(int *arr,int l,int r,int x){
     return i;
 }
 
-int HowToFindMedian(int *a,int n){
+lli HowToFindMedian(lli *a,lli n){
     sort(a,a+n);
     return a[(n)/2];
 }
 
-int ktSmallest(int *arr, int l, int r, int k) 
+lli ktSmallest(lli *arr, lli l, lli r, lli k) 
 { 
      
     if (k > 0 && k <= r - l + 1) 
@@ -42,20 +42,21 @@ int ktSmallest(int *arr, int l, int r, int k)
         int n = r-l+1; 
   
         
-        int i, median[(n+4)/5]; 
+        lli i;
+        lli median[(n+4)/5];
         for (i=0; i<n/5; i++) 
-            median[i] = HowToFindMedian(arr+l+i*5, 5); 
+            median[i]=(HowToFindMedian(arr+(l+i*5), 5)); 
         if (i*5 < n) 
         { 
-            median[i] = HowToFindMedian(arr+l+i*5, n%5);  
+            median[i]=(HowToFindMedian(arr+(l+i*5), n%5));  
             i++; 
         }     
   
-        int medOfMed = (i == 1)? median[i-1]: 
+        lli medOfMed = (i == 1)? median[i-1]: 
                                  ktSmallest(median, 0, i-1, i/2); 
   
       
-        int pos = part(arr, l, r, medOfMed); 
+        lli pos = part(arr, l, r, medOfMed); 
   
        
         if (pos-l == k-1) 
@@ -72,17 +73,17 @@ int ktSmallest(int *arr, int l, int r, int k)
 
 
 int main(){
-    int t;cin>>t;
+    lli t;cin>>t;
     while(t--){
-        int n;cin>>n;
-        int a[1000000];
-        for(int i=0;i<n;i++){
-            int x,y;
+        lli n;cin>>n;
+        lli v[n];
+        for(lli i=0;i<n;i++){
+            lli x,y;
             cin>>x>>y;
-            unsigned long long int d= x*x + y*y;
-            a[i]=d;
+            long long int d= x*x + y*y;
+            v[i]=d;
         }
-        unsigned long long int d= ktSmallest(a,0,n-1,(n)/2);
+        unsigned long long int d= ktSmallest(v,0,n-1,(n)/2);
         cout<<pow(d,0.5)<<endl;
     }
 
