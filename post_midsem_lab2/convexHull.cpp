@@ -33,10 +33,10 @@ int orientation(point a,point b,point c){
         return 0;
     }
     if(x>0){
-        return 2;
+        return 1;
     }
     else{
-        return 1;
+        return 2;
     }
 }
 
@@ -56,22 +56,26 @@ bool compare(point a,point b){
     return 0;
 }
 
-void ConvexHull(vector <point> arr,lli n){
-    lli ymin = arr[0].x,min=0;
+void ConvexHull(vector <point> &arr,lli n){
+    lli xmin = arr[0].x,min=0;
     for(lli i=1;i<n;i++){
         lli m = arr[i].x;
-        if(ymin>m){
+        if(xmin>m){
+        	xmin=arr[i].x;
             min=i;
         }
-        else if(ymin==m){
+        else if(xmin==m){
             if(arr[i].y<arr[min].y){
+            	xmin=arr[i].x;
                 min=i;
             }
         }
     }
     swap(arr[0],arr[min]);
     x0 = arr[0];
-    sort(++arr.begin(),arr.end(),compare);
+    auto it = arr.begin();
+    it++;
+    sort(it,arr.end(),compare);
     vector <point> nodup;
     nodup.push_back(x0);
     for(lli i=1;i<n;i++){
@@ -106,7 +110,7 @@ void ConvexHull(vector <point> arr,lli n){
 
 
 int main(){
-    int n;cin>>n;
+    lli n;cin>>n;
     vector<point> v;
     for(lli i=0;i<n;i++){
         lli x,y;cin>>x>>y;
