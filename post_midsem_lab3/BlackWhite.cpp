@@ -62,11 +62,10 @@ int LargestConnectedGrid(vector<vector<int>> &input,vector<vector<int>> &visited
             if(g_visited[i][j]==0){
                 COUNT = 0; 
   
-                // checking cell to the right 
                 if (j < m) 
                     BFS(input[i][j], input[i][j + 1], i, j, input,visited,g_visited,n,m); 
     
-                // updating result 
+               
                 if (COUNT > current_max) { 
                     current_max = COUNT; 
                     reset_result(input[i][j], input,visited,result,n,m); 
@@ -74,11 +73,11 @@ int LargestConnectedGrid(vector<vector<int>> &input,vector<vector<int>> &visited
                 reset_visited(visited,n,m); 
                 COUNT = 0; 
     
-                // checking cell downwards 
+              
                 if (i + 1 < n) 
                     BFS(input[i][j], input[i + 1][j], i, j, input,visited,g_visited,n,m); 
     
-                // updating result 
+             
                 if (COUNT > current_max) { 
                     current_max = COUNT; 
                     reset_result(input[i][j], input,visited,result,n,m); 
