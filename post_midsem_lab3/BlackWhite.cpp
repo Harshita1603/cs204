@@ -20,7 +20,6 @@ bool IS_TRUE(int x, int y, int key,vector<vector<int>> &input,vector<vector<int>
 
 void BFS(int x, int y, int i, int j,vector<vector<int>> &input,vector<vector<int>> &visited,vector<vector<int>> &g_visited,int n,int m) 
 { 
-    // terminating case for BFS 
     visited[i][j] = 1; 
     g_visited[i][j] = 1;
     COUNT++;
