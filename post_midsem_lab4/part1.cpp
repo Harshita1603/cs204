@@ -37,7 +37,7 @@ int main(){
 		}
 		if(ans==0)break;
 	}
-	if(ans)cout<<"Graph is Bipartite";
-	else cout<<"Graph is not Bipartite";
+	if(ans)cout<<"YES";
+	else cout<<"NO";
 	
 }
