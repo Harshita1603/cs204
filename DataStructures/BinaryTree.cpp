@@ -137,7 +137,7 @@ bool find(node * root,int data){
 int main(){
 
 node * root= createTree();
-cout<<"LevelWise Printing : ";
+cout<<"LevelWise Printing : "<<endl;
 printAtDiffLevel(root);
 cout<<"preorder Traversal :";
 preorder(root);
