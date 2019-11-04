@@ -1,4 +1,4 @@
-//Question: Construct a Balanced BST from the given trees and print it,s inorder traversal
+//Question: Construct a Balanced BST from the given keys and print the keys at depth k from root
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -181,6 +181,18 @@ node* deleteNode(node* root, int key)
     return root; 
     }
 }
+void printAtDepthK(node * root,int k){
+    if(!root){
+        return;
+    }
+    if(k==0){
+        cout<<root->key<<" ";
+        return;
+    }
+    printAtDepthK(root->left,k-1);
+    printAtDepthK(root->right,k-1);
+    return;
+}
 
 int main()
 {
@@ -197,6 +209,7 @@ int main()
 	{
 		root=insert(root, v[i]);
 	}
-	inorder(root);
+	int k;cin>>k;
+	printAtDepthK(root,k);
 	return 0;
 }
