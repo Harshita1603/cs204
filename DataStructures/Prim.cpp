@@ -21,7 +21,7 @@ void prim(vector<pair<ll,ll> > adjlist[], ll n)
     //Using MIN Heap ,(weight,source)
     priority_queue< iPair, vector <iPair> , greater<iPair> > pq; 
     pq.push(make_pair(0,0));
-    
+    //Loop
     while(!pq.empty())
     {
         ll cv = pq.top().second;
