@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define gc getchar_unlocked
+
 #define fo(i,n) for(i=0;i<n;i++)
 #define Fo(i,k,n) for(i=k;i<n;i++)
 #define REP(i,a,b) for(ll i=a;i<b;i++)
@@ -8,11 +8,7 @@
 #define vi vector<int>
 #define pb push_back
 #define mp make_pair
-#define mod 1000000007
 #define ll long long
-#define SIZE 100
-#define M 10000019
-#define num 5
 using namespace std;
 
 static bool hashingTable[num][M];
