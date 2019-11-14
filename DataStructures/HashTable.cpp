@@ -18,7 +18,7 @@ void hashSearch(list<int> table[],int x)
 
     }
     cout<<"NOT FOUND"<<endl;
-    if(i!=table[k].end())table[k].erase(i);
+    
 
 }
 void hashDelete(list<int> table[],int x)
